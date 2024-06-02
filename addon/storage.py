@@ -32,6 +32,8 @@ def remove_postgres_instance(instance_name: str) -> None:
         if instance is None:
             log.info("Instance not found, doing nothing")
             return
+        for database in instance.databases:
+            dbsession.delete(database)
         dbsession.delete(instance)
 
 
