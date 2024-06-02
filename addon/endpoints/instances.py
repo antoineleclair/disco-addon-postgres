@@ -60,7 +60,7 @@ def instance_delete(instance_name: Annotated[str, Path()]):
                 {"project": attachment.project_name, "envVar": attachment.env_var}
                 for attachment in attachments
             ]
-            raise HTTPException(422, f"Instance still in use: {usage}")
+            raise HTTPException(422, f"Instance {instance_name} still in use: {usage}")
     postgres_project_name = misc.instance_project_name(instance_name)
     if disco.project_exists(postgres_project_name):
         disco.remove_project(postgres_project_name)
