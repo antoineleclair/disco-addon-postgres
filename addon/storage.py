@@ -121,7 +121,8 @@ def remove_user(instance_name: str, db_name: str, user_name: str) -> None:
         if user is None:
             log.info("User not found, doing nothing")
             return
-        assert len(user.attachments) == 0
+        for attachment in user.attachments:
+            dbsession.delete(attachment)
         dbsession.delete(user_name)
 
 
