@@ -123,7 +123,7 @@ def remove_user(instance_name: str, db_name: str, user_name: str) -> None:
             return
         for attachment in user.attachments:
             dbsession.delete(attachment)
-        dbsession.delete(user_name)
+        dbsession.delete(user)
 
 
 def add_attachment(
