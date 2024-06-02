@@ -176,12 +176,12 @@ def get_admin_conn_str(instance_name: str) -> str | None:
     with Session.begin() as dbsession:
         instance = get_instance_by_name(dbsession, instance_name)
         assert instance is not None
-    return misc.conn_string(
-        user=instance.admin_user,
-        password=instance.admin_password,
-        postgres_project_name=misc.instance_project_name(instance_name),
-        db_name=None,
-    )
+        return misc.conn_string(
+            user=instance.admin_user,
+            password=instance.admin_password,
+            postgres_project_name=misc.instance_project_name(instance_name),
+            db_name=None,
+        )
 
 
 def get_instance_by_name(dbsession, instance_name) -> Instance | None:
