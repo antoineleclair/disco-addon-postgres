@@ -3,7 +3,11 @@
     "services": {
         "endpoints": {
             "type": "cgi",
-            "command": "python addoncgi.py"
+            "command": "addon_cgi"
+        },
+        "hook:deploy:start:before": {
+            "type": "command",
+            "command": "addon_deploy"
         }
     }
 }
